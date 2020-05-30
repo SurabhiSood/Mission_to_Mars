@@ -1,62 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Mission to Mars</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <title>Mission To Mars</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
 
     <body>
-        <div class="container";>
-            <div class="jumbotron text-center" style="background-image: url('../Images/mission_to_mars.png'); background-size: cover;">
-                <h1 style="color:black;">Mission to Mars</h1>
+        <div class="container-fluid" style="background:azure;">
+            <div class="jumbotron" style="background-image: url('https://wonderfest.org/wp-content/uploads/2018/01/mission-mars-e1528241593215.jpg'); background-size: cover;">
+                <h1 style="color:azure;">Mission to Mars</h1>
                 <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape News Data</a>
             </div>
-        </div>
-
+           
         <!--Adding the latest news-->
-        <div class="container">
-            <h4 style="text-decoration: underline;">Latest Mars News</h4>
-            <h5><i>{{mars.news_title}}</i></h5>
-            <h6>{{mars.news_p}}</h6>
-        </div> 
-
-        <!--Dividing page in two columns-->
-        <div class="container">
+            <h5 style="font-family: sans-serif;">Latest News on Mars</h5>
+            <p><h6 style="font-family: sans-serif;"><b>{{mars.news_title}}</b> - {{mars.news_p}}</h6></p>
+            <hr>
+        
+            <!--Featured Image-->    
             <div class="row">
                 <div class="col-sm">
-                    <h4>Featured Mars Image</h4>
-                    <img src="{{mars.final_url}}" alt='Featured Mars Image' height="600" width="500">
+                    <h4 style="font-family: sans-serif; text-align: center;" >Featured Mars Image</h4>
+                    <img src="{{mars.final_url}}" alt='Featured Mars Image' height="500" width="400" style="display: block; margin-left: auto; margin-right: auto;">
                 </div>
-                <div class="col-sm">                        
-                    <p style="border: solid; border-block-color: border-left: .5px solid #000;">
-                    <br>
+                <div class="col-sm"><br><br>                      
+                    <p style="border:1px; border-style:dotted; border-color:black; padding: 1em;">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-                    <br>
                     </p>
+
+                    <p><h6 style="font-family: sans-serif; text-align:justify; font-weight: bold;">Mars Facts</h6>
+                    <p>{{mars.Mars_table|safe}}</p>
                     
-                    <table class="table table-bordered table-dark">
-                        <thead> <tr style="text-align:right;"> <th></th> </tr> </thead> <tbody> <tr> <th>0</th> <td>Equatorial Diameter:</td> <td>6,792 km</td> </tr> <tr> <th>1</th> <td>Polar Diameter:</td> <td>6,752 km</td> </tr> <tr> <th>2</th> <td>Mass:</td> <td>6.39 × 10^23 kg (0.11 Earths)</td> </tr> <tr> <th>3</th> <td>Moons:</td> <td>2 (Phobos &amp; Deimos)</td> </tr> <tr> <th>4</th> <td>Orbit Distance:</td> <td>227,943,824 km (1.38 AU)</td> </tr> <tr> <th>5</th> <td>Orbit Period:</td> <td>687 days (1.9 years)</td> </tr> <tr> <th>6</th> <td>Surface Temperature:</td> <td>-87 to -5 °C</td> </tr> <tr> <th>7</th> <td>First Record:</td> <td>2nd millennium BC</td> </tr> <tr> <th>8</th> <td>Recorded By:</td> <td>Egyptian astronomers</td> </tr> </tbody>
-                    </table>
                 </div>
             </div>
         </div>
 
-            <!--Adding Mars Hemispheress-->
-        <div class="container">
+        <!--Adding Hemispheres-->
+        <div class="container-fluid" style="background:azure;">
+            <br><hr><h3 style="font-family: sans-serif; text-align: center; font-weight: bold;">Mars Hemispheres</h3><br>
             <div class="row">
-                    <h3 style="text-align:center;">Hemispheres of Mars</h3><br>
-                {% for dict in mars.hemisphere_image_urls %}
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{dict.img_url}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">{{dict.title}}</p>
+                {% for i in mars.hemisphere_image_urls %}
+                <div class='col-md'>
+                    <div class='card' style='width: 22rem;'>
+                        <img class="card-img-top" src="{{i.img_url}}">
+                        <div class='card-body'>
+                            <h4 class='card-title'>{{i.title}}</h4>
                         </div>
                     </div>
+                </div>
                 {% endfor %}
             </div>
         </div>

@@ -55,7 +55,10 @@ def scrape_info():
         facts.append(i)
     
     #Table scraped in html format
-    facts_table=facts[0].to_html()
+    facts_table=facts[0]
+    facts_table.rename(columns={0:'',1:'Values'},inplace = True)
+    facts_table = facts_table.set_index('')
+    Mars_table = facts_table.to_html()
 
     #Mars Hemispheres
     hem_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
@@ -103,7 +106,7 @@ def scrape_info():
         'news_title': news_title,
         'news_p': news_p,
         'final_url': final_url,
-        'facts_table' : facts_table,
+        'Mars_table' : Mars_table,
         'hemisphere_image_urls' : hemisphere_image_urls,
     }
 
