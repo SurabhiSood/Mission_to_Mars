@@ -26,11 +26,9 @@
                     <h4 style="font-family: sans-serif; text-align: center;" >Featured Mars Image</h4>
                     <img src="{{mars.final_url}}" alt='Featured Mars Image' height="500" width="400" style="display: block; margin-left: auto; margin-right: auto;">
                 </div>
-                <div class="col-sm"><br><br>                      
-                    <p style="border:1px; border-style:dotted; border-color:black; padding: 1em;">
-                        {{mars.mars_weather}}
-                    </p>
-
+                <div class="col-sm"><br><br>
+                    <h6 style="font-family: sans-serif; text-align:justify; font-weight: bold;">Weather on Mars</h6>                 
+                    <p style="border:1px; border-style:dotted; border-color:black; padding: 1em;"> {{mars.weather_mars}}</p>
                     <p><h6 style="font-family: sans-serif; text-align:justify; font-weight: bold;">Mars Facts</h6>
                     <p>{{mars.Mars_table|safe}}</p>
                     
@@ -39,7 +37,7 @@
         </div>
 
         <!--Adding Hemispheres-->
-        <div class="container-fluid" style="background:darkorange;">
+        <div class="container-fluid" style="background:peru;">
             <br><hr><h3 style="font-family: sans-serif; text-align: center;">Mars Hemispheres</h3><br>
             <div class="row">
                 {% for i in mars.hemisphere_image_urls %}

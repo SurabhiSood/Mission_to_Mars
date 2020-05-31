@@ -15,6 +15,7 @@ def scrape_info():
     # Scraping NASA Mars News
     url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(url)
+    time.sleep(2)
     html_news = browser.html
     soup = bs(html_news,'html.parser')
 
@@ -47,13 +48,15 @@ def scrape_info():
     # Mars Weather @Twitter
 
     twitter='https://twitter.com/MarsWxReport'
+
     browser.visit(twitter)
     time.sleep(10)
+
     html = browser.html
     soupiness = bs(html, 'html.parser')
 
     tweets = soupiness.find('div',class_='css-901oao r-hkyrab r-1qd0xha r-a023e6 r-16dba41 r-ad9z0x r-bcqeeo r-bnwqim r-qvutc0')
-    mars_weather = tweets.find('span').text
+    weather_mars=tweets.find('span').text
     
     # Mars Facts
     facts=[]
@@ -115,7 +118,7 @@ def scrape_info():
         'news_title': news_title,
         'news_p': news_p,
         'final_url': final_url,
-        'mars_weather': mars_weather,
+        'weather_mars': weather_mars,
         'Mars_table' : Mars_table,
         'hemisphere_image_urls' : hemisphere_image_urls,
     }
