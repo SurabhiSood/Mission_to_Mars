@@ -45,6 +45,15 @@ def scrape_info():
     final_url = f'https://www.jpl.nasa.gov{img_list[1]}'
 
     # Mars Weather @Twitter
+
+    twitter='https://twitter.com/MarsWxReport'
+    browser.visit(twitter)
+    time.sleep(10)
+    html = browser.html
+    soupiness = bs(html, 'html.parser')
+
+    tweets = soupiness.find('div',class_='css-901oao r-hkyrab r-1qd0xha r-a023e6 r-16dba41 r-ad9z0x r-bcqeeo r-bnwqim r-qvutc0')
+    mars_weather = tweets.find('span').text
     
     # Mars Facts
     facts=[]
@@ -106,6 +115,7 @@ def scrape_info():
         'news_title': news_title,
         'news_p': news_p,
         'final_url': final_url,
+        'mars_weather': mars_weather,
         'Mars_table' : Mars_table,
         'hemisphere_image_urls' : hemisphere_image_urls,
     }

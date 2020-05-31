@@ -9,7 +9,7 @@
 </head>
 
     <body>
-        <div class="container-fluid" style="background:azure;">
+        <div class="container-fluid" style="background-color: peru;">
             <div class="jumbotron" style="background-image: url('https://wonderfest.org/wp-content/uploads/2018/01/mission-mars-e1528241593215.jpg'); background-size: cover;">
                 <h1 style="color:azure;">Mission to Mars</h1>
                 <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape News Data</a>
@@ -28,8 +28,7 @@
                 </div>
                 <div class="col-sm"><br><br>                      
                     <p style="border:1px; border-style:dotted; border-color:black; padding: 1em;">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                        {{mars.mars_weather}}
                     </p>
 
                     <p><h6 style="font-family: sans-serif; text-align:justify; font-weight: bold;">Mars Facts</h6>
@@ -40,8 +39,8 @@
         </div>
 
         <!--Adding Hemispheres-->
-        <div class="container-fluid" style="background:azure;">
-            <br><hr><h3 style="font-family: sans-serif; text-align: center; font-weight: bold;">Mars Hemispheres</h3><br>
+        <div class="container-fluid" style="background:darkorange;">
+            <br><hr><h3 style="font-family: sans-serif; text-align: center;">Mars Hemispheres</h3><br>
             <div class="row">
                 {% for i in mars.hemisphere_image_urls %}
                 <div class='col-md'>
@@ -53,7 +52,7 @@
                     </div>
                 </div>
                 {% endfor %}
-            </div>
+            </div><br><br>
         </div>
     </body>
 </html>
