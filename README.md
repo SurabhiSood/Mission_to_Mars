@@ -10,6 +10,8 @@ The second page, was the [Jet Propulsion Laboratory’s Mars page](https://www.j
 
 ![MissionToMars](https://github.com/SurabhiSood/Mission_to_Mars/blob/master/Images/Annotation%202020-07-27%20130104.png)
 
+![MarsHemispheres](https://github.com/SurabhiSood/Mission_to_Mars/blob/master/Images/Capture.PNG)
+
 Third, was the [Mars Weather Twitter Account](https://twitter.com/marswxreport?lang=en), where I would grab the most recent tweet. This was done in the same manner as the first page, parsing through the HTML to find the necessary element, and then grabbing the text of that.
 
 Next, was scraping [Mars facts](https://space-facts.com/mars/) from the Space Facts website. Because the data was stored in a table, I used Pandas to scrape instead of BeautifulSoup. I used pd.read_html() to scrape for tables and took the second returned table which stored the facts I needed. I then renamed the columns and set the index before converting that data frame into an HTML table with df.to_html().
