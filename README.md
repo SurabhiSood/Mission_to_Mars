@@ -8,6 +8,8 @@ Scraping was first done in a Jupyter notebook to test the code as it was written
 
 The second page, was the [Jet Propulsion Laboratory’s Mars page](https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars), where I would grab the full-sized featured image. This required clicking two other links after visiting the first page, so I used browser.click_link_by_partial_text() and time.sleep() to access those pages without inducing an error. Afterwards, I used soup.find_all() and .a[‘href’] to find the relative image path, which I combined with the main URL to get the full-sized image.
 
+![MissionToMars](https://github.com/SurabhiSood/Mission_to_Mars/blob/master/Images/Annotation%202020-07-27%20130104.png)
+
 Third, was the [Mars Weather Twitter Account](https://twitter.com/marswxreport?lang=en), where I would grab the most recent tweet. This was done in the same manner as the first page, parsing through the HTML to find the necessary element, and then grabbing the text of that.
 
 Next, was scraping [Mars facts](https://space-facts.com/mars/) from the Space Facts website. Because the data was stored in a table, I used Pandas to scrape instead of BeautifulSoup. I used pd.read_html() to scrape for tables and took the second returned table which stored the facts I needed. I then renamed the columns and set the index before converting that data frame into an HTML table with df.to_html().
