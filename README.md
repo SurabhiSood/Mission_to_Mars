@@ -1,14 +1,12 @@
-Goal
+### Goal
 Use BeautifulSoup, Splinter, and Pandas to scrape five different webpages related to Mars, and display the results on a webpage using MongoDB and Flask.
 
-Process
+### Process
 Scraping Mars Data
 
+Scraping was first done in a Jupyter notebook to test the code as it was written. After importing the necessary dependencies, I connected to the chromedriver and set up my browser to open each webpage I needed to scrape. I first scraped the [NASA Mars] (https://mars.nasa.gov/news/) News website for the title and text of the most recent article, storing the results in variables to be referenced later. To do this, I used BeautifulSoup to parse through the HTML and search for the appropriate elements and classes that contained the information I needed with soup.find_all(). Because the results come back as a list, I indexed the first item and took the text of that.
 
-
-Scraping was first done in a Jupyter notebook to test the code as it was written. After importing the necessary dependencies, I connected to the chromedriver and set up my browser to open each webpage I needed to scrape. I first scraped the NASA Mars News website for the title and text of the most recent article, storing the results in variables to be referenced later. To do this, I used BeautifulSoup to parse through the HTML and search for the appropriate elements and classes that contained the information I needed with soup.find_all(). Because the results come back as a list, I indexed the first item and took the text of that.
-
-The second page, was the Jet Propulsion Laboratory’s Mars page, where I would grab the full-sized featured image. This required clicking two other links after visiting the first page, so I used browser.click_link_by_partial_text() and time.sleep() to access those pages without inducing an error. Afterwards, I used soup.find_all() and .a[‘href’] to find the relative image path, which I combined with the main URL to get the full-sized image.
+The second page, was the [Jet Propulsion Laboratory’s Mars page](https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars), where I would grab the full-sized featured image. This required clicking two other links after visiting the first page, so I used browser.click_link_by_partial_text() and time.sleep() to access those pages without inducing an error. Afterwards, I used soup.find_all() and .a[‘href’] to find the relative image path, which I combined with the main URL to get the full-sized image.
 
 Third, was the Mars Weather Twitter Account, where I would grab the most recent tweet. This was done in the same manner as the first page, parsing through the HTML to find the necessary element, and then grabbing the text of that.
 
@@ -18,7 +16,7 @@ Lastly, I wanted to grab the images and names of all four of Mars’ hemispheres
 
 After all the code was checked, it was then transferred from the notebook to a Python file and used to create a scraping function. The results of all the scraping was then stored as a dictionary to be returned at the end of the function.
 
-Flask
+### Flask
 
 In a separate file, Flask was used to trigger the scrape function, update the Mongo database with the results, and then return that record of data from the database on a webpage.
 
